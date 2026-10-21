@@ -1,0 +1,31 @@
+{
+  "name": "libraryapi",
+  "version": "1.0.0",
+  "description": "Konyvtar",
+  "homepage": "https://github.com/taglal/Rest_Api#readme",
+  "bugs": {
+    "url": "https://github.com/taglal/Rest_Api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taglal/Rest_Api.git"
+  },
+  "license": "ISC",
+  "author": "Hem",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.24.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

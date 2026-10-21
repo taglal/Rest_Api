@@ -1,0 +1,133 @@
+
+@host = http://localhost:3000
+@bookId = 1
+@readerId = 1
+@loanId = 1
+
+### 1. Összes könyv
+GET {{host}}/api/books
+
+### 2. Egy könyv
+GET {{host}}/api/books/{{bookId}}
+
+### 3. Nem létező könyv
+GET {{host}}/api/books/999999
+
+### 4. Új könyv
+POST {{host}}/api/books
+Content-Type: application/json
+
+{
+    "title": "13.a osztály",
+    "author": "Hujber Enzó",
+    "category": "Horror",
+    "publish_year": 2026
+}
+
+### 5. Könyv módosítása
+PUT {{host}}/api/books/{{bookId}}
+Content-Type: application/json
+
+{
+    "title": "Egri csillagok - módosított",
+    "author": "Gárdonyi Géza",
+    "category": "Történelmi regény",
+    "publish_year": 1901
+}
+
+### 6. Könyv törlése
+DELETE {{host}}/api/books/13
+
+### 7. Összes olvasó
+GET {{host}}/api/readers
+
+### 8. Egy olvasó
+GET {{host}}/api/readers/{{readerId}}
+
+### 9. Nem létező olvasó
+GET {{host}}/api/readers/999999
+
+### 10. Új olvasó
+POST {{host}}/api/readers
+Content-Type: application/json
+
+{
+    "name": "Hujber Enzó",
+    "email": "enzohujber@example.com",
+    "phone": "0620"
+}
+
+### 11. Duplikált e-mail tesztje
+POST {{host}}/api/readers
+Content-Type: application/json
+
+{
+    "name": "Másik Olvasó",
+    "email": "anna.kovacs@example.com",
+    "phone": "+36309998877"
+}
+
+### 12. Olvasó módosítása
+PUT {{host}}/api/readers/{{readerId}}
+Content-Type: application/json
+
+{
+    "name": "Kovács Anna Módosítva",
+    "email": "anna.kovacs@example.com",
+    "phone": "+36301234567"
+}
+
+### 13. Olvasó törlése
+DELETE {{host}}/api/readers/6
+
+### 14. Összes kölcsönzés
+GET {{host}}/api/loans
+
+### 15. Egy kölcsönzés
+GET {{host}}/api/loans/{{loanId}}
+
+### 16. Nem létező kölcsönzés
+GET {{host}}/api/loans/999999
+
+### 17. Új kölcsönzés
+POST {{host}}/api/loans
+Content-Type: application/json
+
+{
+    "book_id": 12,
+    "reader_id": 2,
+    "loan_date": "2026-10-21",
+    "due_date": "2026-11-04"
+}
+
+### 18. Már kölcsönzött könyv újbóli kölcsönzése
+POST {{host}}/api/loans
+Content-Type: application/json
+
+{
+    "book_id": 12,
+    "reader_id": 7,
+    "loan_date": "2026-10-21",
+    "due_date": "2026-11-04"
+}
+
+### 19. Kölcsönzés módosítása
+PUT {{host}}/api/loans/{{loanId}}
+Content-Type: application/json
+
+{
+    "book_id": 12,
+    "reader_id": 7,
+    "loan_date": "2026-10-01",
+    "due_date": "2026-10-20",
+    "return_date": null
+}
+
+### 20. Könyv visszahozása
+PATCH {{host}}/api/loans/{{loanId}}/return
+
+### 21. Lezárt kölcsönzés újbóli lezárása
+PATCH {{host}}/api/loans/{{loanId}}/return
+
+### 22. Kölcsönzés törlése
+DELETE {{host}}/api/loans/6
